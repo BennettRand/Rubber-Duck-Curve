@@ -32,7 +32,7 @@ class ConsumptionModel(Model):
 
 	def _get_power_normalized(self, time_):
 		mins = self.time_to_minutes(time_)
-		return (1.0 + min(5.0 * mins, 1440.0)) / max(2.0, 2.0*mins)
+		return (1.0 / 720.0) * min(1440.0 - mins, mins)
 
 class ProductionModel(Model):
 	def __init__(self, k_watt_peak, nominal_voltage):
